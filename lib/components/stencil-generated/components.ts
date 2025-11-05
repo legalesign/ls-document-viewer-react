@@ -9,7 +9,7 @@
 
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
-import { type LSApiElement, type LSApiRole, type LSApiRoleType, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsToolbarCustomEvent } from "legalesign-document-viewer";
+import { type LSApiElement, type LSApiRole, type LSApiRoleType, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsToolbarCustomEvent } from "legalesign-document-viewer";
 import { LsDocumentOptions as LsDocumentOptionsElement, defineCustomElement as defineLsDocumentOptions } from "legalesign-document-viewer/dist/components/ls-document-options.js";
 import { LsDocumentViewer as LsDocumentViewerElement, defineCustomElement as defineLsDocumentViewer } from "legalesign-document-viewer/dist/components/ls-document-viewer.js";
 import { LsEditorField as LsEditorFieldElement, defineCustomElement as defineLsEditorField } from "legalesign-document-viewer/dist/components/ls-editor-field.js";
@@ -42,6 +42,7 @@ import { LsFormfield as LsFormfieldElement, defineCustomElement as defineLsFormf
 import { LsIcon as LsIconElement, defineCustomElement as defineLsIcon } from "legalesign-document-viewer/dist/components/ls-icon.js";
 import { LsInputWrapper as LsInputWrapperElement, defineCustomElement as defineLsInputWrapper } from "legalesign-document-viewer/dist/components/ls-input-wrapper.js";
 import { LsNumberInput as LsNumberInputElement, defineCustomElement as defineLsNumberInput } from "legalesign-document-viewer/dist/components/ls-number-input.js";
+import { LsPageLoader as LsPageLoaderElement, defineCustomElement as defineLsPageLoader } from "legalesign-document-viewer/dist/components/ls-page-loader.js";
 import { LsParticipantCard as LsParticipantCardElement, defineCustomElement as defineLsParticipantCard } from "legalesign-document-viewer/dist/components/ls-participant-card.js";
 import { LsParticipantManager as LsParticipantManagerElement, defineCustomElement as defineLsParticipantManager } from "legalesign-document-viewer/dist/components/ls-participant-manager.js";
 import { LsParticipantSelect as LsParticipantSelectElement, defineCustomElement as defineLsParticipantSelect } from "legalesign-document-viewer/dist/components/ls-participant-select.js";
@@ -54,6 +55,7 @@ import { LsTextareaInput as LsTextareaInputElement, defineCustomElement as defin
 import { LsToggle as LsToggleElement, defineCustomElement as defineLsToggle } from "legalesign-document-viewer/dist/components/ls-toggle.js";
 import { LsToolbar as LsToolbarElement, defineCustomElement as defineLsToolbar } from "legalesign-document-viewer/dist/components/ls-toolbar.js";
 import { LsToolboxField as LsToolboxFieldElement, defineCustomElement as defineLsToolboxField } from "legalesign-document-viewer/dist/components/ls-toolbox-field.js";
+import { LsTooltip as LsTooltipElement, defineCustomElement as defineLsTooltip } from "legalesign-document-viewer/dist/components/ls-tooltip.js";
 import { LsValidationTag as LsValidationTagElement, defineCustomElement as defineLsValidationTag } from "legalesign-document-viewer/dist/components/ls-validation-tag.js";
 import React from 'react';
 
@@ -206,7 +208,8 @@ export const LsFieldDistribute: StencilReactComponent<LsFieldDistributeElement, 
 
 export type LsFieldFooterEvents = {
     onMutate: EventName<LsFieldFooterCustomEvent<LSMutateEvent[]>>,
-    onUpdate: EventName<LsFieldFooterCustomEvent<LSMutateEvent[]>>
+    onUpdate: EventName<LsFieldFooterCustomEvent<LSMutateEvent[]>>,
+    onSelectFields: EventName<LsFieldFooterCustomEvent<LSApiElement[]>>
 };
 
 export const LsFieldFooter: StencilReactComponent<LsFieldFooterElement, LsFieldFooterEvents> = /*@__PURE__*/ createComponent<LsFieldFooterElement, LsFieldFooterEvents>({
@@ -216,7 +219,8 @@ export const LsFieldFooter: StencilReactComponent<LsFieldFooterElement, LsFieldF
     react: React,
     events: {
         onMutate: 'mutate',
-        onUpdate: 'update'
+        onUpdate: 'update',
+        onSelectFields: 'selectFields'
     } as LsFieldFooterEvents,
     defineCustomElement: defineLsFieldFooter
 });
@@ -371,14 +375,20 @@ export const LsFieldPropertiesImage: StencilReactComponent<LsFieldPropertiesImag
     defineCustomElement: defineLsFieldPropertiesImage
 });
 
-export type LsFieldPropertiesMultipleEvents = NonNullable<unknown>;
+export type LsFieldPropertiesMultipleEvents = {
+    onMutate: EventName<LsFieldPropertiesMultipleCustomEvent<LSMutateEvent[]>>,
+    onUpdate: EventName<LsFieldPropertiesMultipleCustomEvent<LSMutateEvent[]>>
+};
 
 export const LsFieldPropertiesMultiple: StencilReactComponent<LsFieldPropertiesMultipleElement, LsFieldPropertiesMultipleEvents> = /*@__PURE__*/ createComponent<LsFieldPropertiesMultipleElement, LsFieldPropertiesMultipleEvents>({
     tagName: 'ls-field-properties-multiple',
     elementClass: LsFieldPropertiesMultipleElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: {} as LsFieldPropertiesMultipleEvents,
+    events: {
+        onMutate: 'mutate',
+        onUpdate: 'update'
+    } as LsFieldPropertiesMultipleEvents,
     defineCustomElement: defineLsFieldPropertiesMultiple
 });
 
@@ -485,6 +495,17 @@ export const LsNumberInput: StencilReactComponent<LsNumberInputElement, LsNumber
     react: React,
     events: {} as LsNumberInputEvents,
     defineCustomElement: defineLsNumberInput
+});
+
+export type LsPageLoaderEvents = NonNullable<unknown>;
+
+export const LsPageLoader: StencilReactComponent<LsPageLoaderElement, LsPageLoaderEvents> = /*@__PURE__*/ createComponent<LsPageLoaderElement, LsPageLoaderEvents>({
+    tagName: 'ls-page-loader',
+    elementClass: LsPageLoaderElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as LsPageLoaderEvents,
+    defineCustomElement: defineLsPageLoader
 });
 
 export type LsParticipantCardEvents = {
@@ -638,15 +659,26 @@ export const LsToolbar: StencilReactComponent<LsToolbarElement, LsToolbarEvents>
     defineCustomElement: defineLsToolbar
 });
 
-export type LsToolboxFieldEvents = NonNullable<unknown>;
+export type LsToolboxFieldEvents = { onSelected: EventName<CustomEvent<any>> };
 
 export const LsToolboxField: StencilReactComponent<LsToolboxFieldElement, LsToolboxFieldEvents> = /*@__PURE__*/ createComponent<LsToolboxFieldElement, LsToolboxFieldEvents>({
     tagName: 'ls-toolbox-field',
     elementClass: LsToolboxFieldElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: {} as LsToolboxFieldEvents,
+    events: { onSelected: 'selected' } as LsToolboxFieldEvents,
     defineCustomElement: defineLsToolboxField
+});
+
+export type LsTooltipEvents = NonNullable<unknown>;
+
+export const LsTooltip: StencilReactComponent<LsTooltipElement, LsTooltipEvents> = /*@__PURE__*/ createComponent<LsTooltipElement, LsTooltipEvents>({
+    tagName: 'ls-tooltip',
+    elementClass: LsTooltipElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as LsTooltipEvents,
+    defineCustomElement: defineLsTooltip
 });
 
 export type LsValidationTagEvents = NonNullable<unknown>;
