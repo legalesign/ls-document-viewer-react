@@ -39,8 +39,10 @@ import { LsFieldProperties as LsFieldPropertiesElement, defineCustomElement as d
 import { LsFieldSize as LsFieldSizeElement, defineCustomElement as defineLsFieldSize } from "legalesign-document-viewer/dist/components/ls-field-size.js";
 import { LsFieldTypeDisplay as LsFieldTypeDisplayElement, defineCustomElement as defineLsFieldTypeDisplay } from "legalesign-document-viewer/dist/components/ls-field-type-display.js";
 import { LsFormfield as LsFormfieldElement, defineCustomElement as defineLsFormfield } from "legalesign-document-viewer/dist/components/ls-formfield.js";
+import { LsHelperBar as LsHelperBarElement, defineCustomElement as defineLsHelperBar } from "legalesign-document-viewer/dist/components/ls-helper-bar.js";
 import { LsIcon as LsIconElement, defineCustomElement as defineLsIcon } from "legalesign-document-viewer/dist/components/ls-icon.js";
 import { LsInputWrapper as LsInputWrapperElement, defineCustomElement as defineLsInputWrapper } from "legalesign-document-viewer/dist/components/ls-input-wrapper.js";
+import { LsKeyboardShortcuts as LsKeyboardShortcutsElement, defineCustomElement as defineLsKeyboardShortcuts } from "legalesign-document-viewer/dist/components/ls-keyboard-shortcuts.js";
 import { LsNumberInput as LsNumberInputElement, defineCustomElement as defineLsNumberInput } from "legalesign-document-viewer/dist/components/ls-number-input.js";
 import { LsPageLoader as LsPageLoaderElement, defineCustomElement as defineLsPageLoader } from "legalesign-document-viewer/dist/components/ls-page-loader.js";
 import { LsParticipantCard as LsParticipantCardElement, defineCustomElement as defineLsParticipantCard } from "legalesign-document-viewer/dist/components/ls-participant-card.js";
@@ -464,6 +466,17 @@ export const LsFormfield: StencilReactComponent<LsFormfieldElement, LsFormfieldE
     defineCustomElement: defineLsFormfield
 });
 
+export type LsHelperBarEvents = NonNullable<unknown>;
+
+export const LsHelperBar: StencilReactComponent<LsHelperBarElement, LsHelperBarEvents> = /*@__PURE__*/ createComponent<LsHelperBarElement, LsHelperBarEvents>({
+    tagName: 'ls-helper-bar',
+    elementClass: LsHelperBarElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as LsHelperBarEvents,
+    defineCustomElement: defineLsHelperBar
+});
+
 export type LsIconEvents = NonNullable<unknown>;
 
 export const LsIcon: StencilReactComponent<LsIconElement, LsIconEvents> = /*@__PURE__*/ createComponent<LsIconElement, LsIconEvents>({
@@ -484,6 +497,17 @@ export const LsInputWrapper: StencilReactComponent<LsInputWrapperElement, LsInpu
     react: React,
     events: {} as LsInputWrapperEvents,
     defineCustomElement: defineLsInputWrapper
+});
+
+export type LsKeyboardShortcutsEvents = NonNullable<unknown>;
+
+export const LsKeyboardShortcuts: StencilReactComponent<LsKeyboardShortcutsElement, LsKeyboardShortcutsEvents> = /*@__PURE__*/ createComponent<LsKeyboardShortcutsElement, LsKeyboardShortcutsEvents>({
+    tagName: 'ls-keyboard-shortcuts',
+    elementClass: LsKeyboardShortcutsElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as LsKeyboardShortcutsEvents,
+    defineCustomElement: defineLsKeyboardShortcuts
 });
 
 export type LsNumberInputEvents = NonNullable<unknown>;
@@ -659,14 +683,23 @@ export const LsToolbar: StencilReactComponent<LsToolbarElement, LsToolbarEvents>
     defineCustomElement: defineLsToolbar
 });
 
-export type LsToolboxFieldEvents = { onSelected: EventName<CustomEvent<any>> };
+export type LsToolboxFieldEvents = {
+    onFieldTypeSelected: EventName<CustomEvent<{
+        label: string
+        elementType: string
+        defaultHeight: number
+        defaultWidth: number
+        formElementType: string
+        validation: number
+    }>>
+};
 
 export const LsToolboxField: StencilReactComponent<LsToolboxFieldElement, LsToolboxFieldEvents> = /*@__PURE__*/ createComponent<LsToolboxFieldElement, LsToolboxFieldEvents>({
     tagName: 'ls-toolbox-field',
     elementClass: LsToolboxFieldElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onSelected: 'selected' } as LsToolboxFieldEvents,
+    events: { onFieldTypeSelected: 'fieldTypeSelected' } as LsToolboxFieldEvents,
     defineCustomElement: defineLsToolboxField
 });
 
