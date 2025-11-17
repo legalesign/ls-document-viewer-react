@@ -10,6 +10,7 @@
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import { type LSApiElement, type LSApiRole, type LSApiRoleType, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsToolbarCustomEvent } from "legalesign-document-viewer";
+import { LsComposeManager as LsComposeManagerElement, defineCustomElement as defineLsComposeManager } from "legalesign-document-viewer/dist/components/ls-compose-manager.js";
 import { LsDocumentOptions as LsDocumentOptionsElement, defineCustomElement as defineLsDocumentOptions } from "legalesign-document-viewer/dist/components/ls-document-options.js";
 import { LsDocumentViewer as LsDocumentViewerElement, defineCustomElement as defineLsDocumentViewer } from "legalesign-document-viewer/dist/components/ls-document-viewer.js";
 import { LsEditorField as LsEditorFieldElement, defineCustomElement as defineLsEditorField } from "legalesign-document-viewer/dist/components/ls-editor-field.js";
@@ -60,6 +61,17 @@ import { LsToolboxField as LsToolboxFieldElement, defineCustomElement as defineL
 import { LsTooltip as LsTooltipElement, defineCustomElement as defineLsTooltip } from "legalesign-document-viewer/dist/components/ls-tooltip.js";
 import { LsValidationTag as LsValidationTagElement, defineCustomElement as defineLsValidationTag } from "legalesign-document-viewer/dist/components/ls-validation-tag.js";
 import React from 'react';
+
+export type LsComposeManagerEvents = NonNullable<unknown>;
+
+export const LsComposeManager: StencilReactComponent<LsComposeManagerElement, LsComposeManagerEvents> = /*@__PURE__*/ createComponent<LsComposeManagerElement, LsComposeManagerEvents>({
+    tagName: 'ls-compose-manager',
+    elementClass: LsComposeManagerElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as LsComposeManagerEvents,
+    defineCustomElement: defineLsComposeManager
+});
 
 export type LsDocumentOptionsEvents = {
     onMutate: EventName<LsDocumentOptionsCustomEvent<LSMutateEvent[]>>,
@@ -691,6 +703,7 @@ export type LsToolboxFieldEvents = {
         defaultWidth: number
         formElementType: string
         validation: number
+        fixedAspect: number | null
     }>>
 };
 
