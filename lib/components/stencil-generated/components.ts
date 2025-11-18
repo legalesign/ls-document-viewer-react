@@ -51,6 +51,7 @@ import { LsParticipantManager as LsParticipantManagerElement, defineCustomElemen
 import { LsParticipantSelect as LsParticipantSelectElement, defineCustomElement as defineLsParticipantSelect } from "legalesign-document-viewer/dist/components/ls-participant-select.js";
 import { LsPropsSection as LsPropsSectionElement, defineCustomElement as defineLsPropsSection } from "legalesign-document-viewer/dist/components/ls-props-section.js";
 import { LsRadioInput as LsRadioInputElement, defineCustomElement as defineLsRadioInput } from "legalesign-document-viewer/dist/components/ls-radio-input.js";
+import { LsRecipientManager as LsRecipientManagerElement, defineCustomElement as defineLsRecipientManager } from "legalesign-document-viewer/dist/components/ls-recipient-manager.js";
 import { LsSelectInput as LsSelectInputElement, defineCustomElement as defineLsSelectInput } from "legalesign-document-viewer/dist/components/ls-select-input.js";
 import { LsStatusbar as LsStatusbarElement, defineCustomElement as defineLsStatusbar } from "legalesign-document-viewer/dist/components/ls-statusbar.js";
 import { LsTextInput as LsTextInputElement, defineCustomElement as defineLsTextInput } from "legalesign-document-viewer/dist/components/ls-text-input.js";
@@ -59,6 +60,7 @@ import { LsToggle as LsToggleElement, defineCustomElement as defineLsToggle } fr
 import { LsToolbar as LsToolbarElement, defineCustomElement as defineLsToolbar } from "legalesign-document-viewer/dist/components/ls-toolbar.js";
 import { LsToolboxField as LsToolboxFieldElement, defineCustomElement as defineLsToolboxField } from "legalesign-document-viewer/dist/components/ls-toolbox-field.js";
 import { LsTooltip as LsTooltipElement, defineCustomElement as defineLsTooltip } from "legalesign-document-viewer/dist/components/ls-tooltip.js";
+import { LsValidationManager as LsValidationManagerElement, defineCustomElement as defineLsValidationManager } from "legalesign-document-viewer/dist/components/ls-validation-manager.js";
 import { LsValidationTag as LsValidationTagElement, defineCustomElement as defineLsValidationTag } from "legalesign-document-viewer/dist/components/ls-validation-tag.js";
 import React from 'react';
 
@@ -141,7 +143,7 @@ export const LsEditorTable: StencilReactComponent<LsEditorTableElement, LsEditor
     defineCustomElement: defineLsEditorTable
 });
 
-export type LsFeatureColumnEvents = { onManage: EventName<CustomEvent<'document' | 'toolbox' | 'participant'>> };
+export type LsFeatureColumnEvents = { onManage: EventName<CustomEvent<'document' | 'toolbox' | 'participant' | 'recipient' | 'validation'>> };
 
 export const LsFeatureColumn: StencilReactComponent<LsFeatureColumnElement, LsFeatureColumnEvents> = /*@__PURE__*/ createComponent<LsFeatureColumnElement, LsFeatureColumnEvents>({
     tagName: 'ls-feature-column',
@@ -623,6 +625,17 @@ export const LsRadioInput: StencilReactComponent<LsRadioInputElement, LsRadioInp
     defineCustomElement: defineLsRadioInput
 });
 
+export type LsRecipientManagerEvents = NonNullable<unknown>;
+
+export const LsRecipientManager: StencilReactComponent<LsRecipientManagerElement, LsRecipientManagerEvents> = /*@__PURE__*/ createComponent<LsRecipientManagerElement, LsRecipientManagerEvents>({
+    tagName: 'ls-recipient-manager',
+    elementClass: LsRecipientManagerElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as LsRecipientManagerEvents,
+    defineCustomElement: defineLsRecipientManager
+});
+
 export type LsSelectInputEvents = NonNullable<unknown>;
 
 export const LsSelectInput: StencilReactComponent<LsSelectInputElement, LsSelectInputEvents> = /*@__PURE__*/ createComponent<LsSelectInputElement, LsSelectInputEvents>({
@@ -725,6 +738,17 @@ export const LsTooltip: StencilReactComponent<LsTooltipElement, LsTooltipEvents>
     react: React,
     events: {} as LsTooltipEvents,
     defineCustomElement: defineLsTooltip
+});
+
+export type LsValidationManagerEvents = NonNullable<unknown>;
+
+export const LsValidationManager: StencilReactComponent<LsValidationManagerElement, LsValidationManagerEvents> = /*@__PURE__*/ createComponent<LsValidationManagerElement, LsValidationManagerEvents>({
+    tagName: 'ls-validation-manager',
+    elementClass: LsValidationManagerElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as LsValidationManagerEvents,
+    defineCustomElement: defineLsValidationManager
 });
 
 export type LsValidationTagEvents = NonNullable<unknown>;
