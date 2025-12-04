@@ -51,6 +51,7 @@ import { LsParticipantManager as LsParticipantManagerElement, defineCustomElemen
 import { LsParticipantSelect as LsParticipantSelectElement, defineCustomElement as defineLsParticipantSelect } from "legalesign-document-viewer/dist/components/ls-participant-select.js";
 import { LsPropsSection as LsPropsSectionElement, defineCustomElement as defineLsPropsSection } from "legalesign-document-viewer/dist/components/ls-props-section.js";
 import { LsRadioInput as LsRadioInputElement, defineCustomElement as defineLsRadioInput } from "legalesign-document-viewer/dist/components/ls-radio-input.js";
+import { LsRecipientCard as LsRecipientCardElement, defineCustomElement as defineLsRecipientCard } from "legalesign-document-viewer/dist/components/ls-recipient-card.js";
 import { LsRecipientManager as LsRecipientManagerElement, defineCustomElement as defineLsRecipientManager } from "legalesign-document-viewer/dist/components/ls-recipient-manager.js";
 import { LsSelectInput as LsSelectInputElement, defineCustomElement as defineLsSelectInput } from "legalesign-document-viewer/dist/components/ls-select-input.js";
 import { LsStatusbar as LsStatusbarElement, defineCustomElement as defineLsStatusbar } from "legalesign-document-viewer/dist/components/ls-statusbar.js";
@@ -625,6 +626,17 @@ export const LsRadioInput: StencilReactComponent<LsRadioInputElement, LsRadioInp
     defineCustomElement: defineLsRadioInput
 });
 
+export type LsRecipientCardEvents = { onChangeSigner: EventName<CustomEvent<number>> };
+
+export const LsRecipientCard: StencilReactComponent<LsRecipientCardElement, LsRecipientCardEvents> = /*@__PURE__*/ createComponent<LsRecipientCardElement, LsRecipientCardEvents>({
+    tagName: 'ls-recipient-card',
+    elementClass: LsRecipientCardElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onChangeSigner: 'changeSigner' } as LsRecipientCardEvents,
+    defineCustomElement: defineLsRecipientCard
+});
+
 export type LsRecipientManagerEvents = NonNullable<unknown>;
 
 export const LsRecipientManager: StencilReactComponent<LsRecipientManagerElement, LsRecipientManagerEvents> = /*@__PURE__*/ createComponent<LsRecipientManagerElement, LsRecipientManagerEvents>({
@@ -710,13 +722,13 @@ export const LsToolbar: StencilReactComponent<LsToolbarElement, LsToolbarEvents>
 
 export type LsToolboxFieldEvents = {
     onFieldTypeSelected: EventName<CustomEvent<{
-        label: string
-        elementType: string
-        defaultHeight: number
-        defaultWidth: number
-        formElementType: string
-        validation: number
-        fixedAspect: number | null
+        label: string;
+        elementType: string;
+        defaultHeight: number;
+        defaultWidth: number;
+        formElementType: string;
+        validation: number;
+        fixedAspect: number | null;
     }>>
 };
 
