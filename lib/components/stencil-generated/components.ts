@@ -9,7 +9,7 @@
 
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
-import { type LSApiElement, type LSApiRole, type LSApiRoleType, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsToolbarCustomEvent } from "legalesign-document-viewer";
+import { type IToolboxField, type LSApiElement, type LSApiRole, type LSApiRoleType, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsRecipientCardCustomEvent, type LsToolbarCustomEvent } from "legalesign-document-viewer";
 import { LsComposeManager as LsComposeManagerElement, defineCustomElement as defineLsComposeManager } from "legalesign-document-viewer/dist/components/ls-compose-manager.js";
 import { LsDocumentOptions as LsDocumentOptionsElement, defineCustomElement as defineLsDocumentOptions } from "legalesign-document-viewer/dist/components/ls-document-options.js";
 import { LsDocumentViewer as LsDocumentViewerElement, defineCustomElement as defineLsDocumentViewer } from "legalesign-document-viewer/dist/components/ls-document-viewer.js";
@@ -626,14 +626,20 @@ export const LsRadioInput: StencilReactComponent<LsRadioInputElement, LsRadioInp
     defineCustomElement: defineLsRadioInput
 });
 
-export type LsRecipientCardEvents = { onChangeSigner: EventName<CustomEvent<number>> };
+export type LsRecipientCardEvents = {
+    onChangeSigner: EventName<CustomEvent<number>>,
+    onFieldSelected: EventName<LsRecipientCardCustomEvent<IToolboxField>>
+};
 
 export const LsRecipientCard: StencilReactComponent<LsRecipientCardElement, LsRecipientCardEvents> = /*@__PURE__*/ createComponent<LsRecipientCardElement, LsRecipientCardEvents>({
     tagName: 'ls-recipient-card',
     elementClass: LsRecipientCardElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onChangeSigner: 'changeSigner' } as LsRecipientCardEvents,
+    events: {
+        onChangeSigner: 'changeSigner',
+        onFieldSelected: 'fieldSelected'
+    } as LsRecipientCardEvents,
     defineCustomElement: defineLsRecipientCard
 });
 
