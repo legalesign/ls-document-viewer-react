@@ -98,8 +98,7 @@ export type LsDocumentViewerEvents = {
     onPageRendered: EventName<CustomEvent<number>>,
     onPageChange: EventName<CustomEvent<number>>,
     onSelectFields: EventName<LsDocumentViewerCustomEvent<LSApiElement[]>>,
-    onMutate: EventName<LsDocumentViewerCustomEvent<LSMutateEvent[]>>,
-    onUpdate: EventName<LsDocumentViewerCustomEvent<LSMutateEvent[]>>
+    onMutate: EventName<LsDocumentViewerCustomEvent<LSMutateEvent[]>>
 };
 
 export const LsDocumentViewer: StencilReactComponent<LsDocumentViewerElement, LsDocumentViewerEvents> = /*@__PURE__*/ createComponent<LsDocumentViewerElement, LsDocumentViewerEvents>({
@@ -111,8 +110,7 @@ export const LsDocumentViewer: StencilReactComponent<LsDocumentViewerElement, Ls
         onPageRendered: 'pageRendered',
         onPageChange: 'pageChange',
         onSelectFields: 'selectFields',
-        onMutate: 'mutate',
-        onUpdate: 'update'
+        onMutate: 'mutate'
     } as LsDocumentViewerEvents,
     defineCustomElement: defineLsDocumentViewer
 });
@@ -207,20 +205,14 @@ export const LsFieldDimensions: StencilReactComponent<LsFieldDimensionsElement, 
     defineCustomElement: defineLsFieldDimensions
 });
 
-export type LsFieldDistributeEvents = {
-    onMutate: EventName<LsFieldDistributeCustomEvent<LSMutateEvent[]>>,
-    onUpdate: EventName<LsFieldDistributeCustomEvent<LSMutateEvent[]>>
-};
+export type LsFieldDistributeEvents = { onMutate: EventName<LsFieldDistributeCustomEvent<LSMutateEvent[]>> };
 
 export const LsFieldDistribute: StencilReactComponent<LsFieldDistributeElement, LsFieldDistributeEvents> = /*@__PURE__*/ createComponent<LsFieldDistributeElement, LsFieldDistributeEvents>({
     tagName: 'ls-field-distribute',
     elementClass: LsFieldDistributeElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: {
-        onMutate: 'mutate',
-        onUpdate: 'update'
-    } as LsFieldDistributeEvents,
+    events: { onMutate: 'mutate' } as LsFieldDistributeEvents,
     defineCustomElement: defineLsFieldDistribute
 });
 
@@ -243,37 +235,25 @@ export const LsFieldFooter: StencilReactComponent<LsFieldFooterElement, LsFieldF
     defineCustomElement: defineLsFieldFooter
 });
 
-export type LsFieldFormatEvents = {
-    onMutate: EventName<LsFieldFormatCustomEvent<LSMutateEvent[]>>,
-    onUpdate: EventName<LsFieldFormatCustomEvent<LSMutateEvent[]>>
-};
+export type LsFieldFormatEvents = { onMutate: EventName<LsFieldFormatCustomEvent<LSMutateEvent[]>> };
 
 export const LsFieldFormat: StencilReactComponent<LsFieldFormatElement, LsFieldFormatEvents> = /*@__PURE__*/ createComponent<LsFieldFormatElement, LsFieldFormatEvents>({
     tagName: 'ls-field-format',
     elementClass: LsFieldFormatElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: {
-        onMutate: 'mutate',
-        onUpdate: 'update'
-    } as LsFieldFormatEvents,
+    events: { onMutate: 'mutate' } as LsFieldFormatEvents,
     defineCustomElement: defineLsFieldFormat
 });
 
-export type LsFieldPlacementEvents = {
-    onMutate: EventName<LsFieldPlacementCustomEvent<LSMutateEvent[]>>,
-    onUpdate: EventName<LsFieldPlacementCustomEvent<LSMutateEvent[]>>
-};
+export type LsFieldPlacementEvents = { onMutate: EventName<LsFieldPlacementCustomEvent<LSMutateEvent[]>> };
 
 export const LsFieldPlacement: StencilReactComponent<LsFieldPlacementElement, LsFieldPlacementEvents> = /*@__PURE__*/ createComponent<LsFieldPlacementElement, LsFieldPlacementEvents>({
     tagName: 'ls-field-placement',
     elementClass: LsFieldPlacementElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: {
-        onMutate: 'mutate',
-        onUpdate: 'update'
-    } as LsFieldPlacementEvents,
+    events: { onMutate: 'mutate' } as LsFieldPlacementEvents,
     defineCustomElement: defineLsFieldPlacement
 });
 
@@ -288,20 +268,14 @@ export const LsFieldProperties: StencilReactComponent<LsFieldPropertiesElement, 
     defineCustomElement: defineLsFieldProperties
 });
 
-export type LsFieldPropertiesAdvancedEvents = {
-    onMutate: EventName<LsFieldPropertiesAdvancedCustomEvent<LSMutateEvent[]>>,
-    onUpdate: EventName<LsFieldPropertiesAdvancedCustomEvent<LSMutateEvent[]>>
-};
+export type LsFieldPropertiesAdvancedEvents = { onMutate: EventName<LsFieldPropertiesAdvancedCustomEvent<LSMutateEvent[]>> };
 
 export const LsFieldPropertiesAdvanced: StencilReactComponent<LsFieldPropertiesAdvancedElement, LsFieldPropertiesAdvancedEvents> = /*@__PURE__*/ createComponent<LsFieldPropertiesAdvancedElement, LsFieldPropertiesAdvancedEvents>({
     tagName: 'ls-field-properties-advanced',
     elementClass: LsFieldPropertiesAdvancedElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: {
-        onMutate: 'mutate',
-        onUpdate: 'update'
-    } as LsFieldPropertiesAdvancedEvents,
+    events: { onMutate: 'mutate' } as LsFieldPropertiesAdvancedEvents,
     defineCustomElement: defineLsFieldPropertiesAdvanced
 });
 
@@ -443,20 +417,14 @@ export const LsFieldPropertiesText: StencilReactComponent<LsFieldPropertiesTextE
     defineCustomElement: defineLsFieldPropertiesText
 });
 
-export type LsFieldSizeEvents = {
-    onMutate: EventName<LsFieldSizeCustomEvent<LSMutateEvent[]>>,
-    onUpdate: EventName<LsFieldSizeCustomEvent<LSMutateEvent[]>>
-};
+export type LsFieldSizeEvents = { onMutate: EventName<LsFieldSizeCustomEvent<LSMutateEvent[]>> };
 
 export const LsFieldSize: StencilReactComponent<LsFieldSizeElement, LsFieldSizeEvents> = /*@__PURE__*/ createComponent<LsFieldSizeElement, LsFieldSizeEvents>({
     tagName: 'ls-field-size',
     elementClass: LsFieldSizeElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: {
-        onMutate: 'mutate',
-        onUpdate: 'update'
-    } as LsFieldSizeEvents,
+    events: { onMutate: 'mutate' } as LsFieldSizeEvents,
     defineCustomElement: defineLsFieldSize
 });
 
@@ -550,7 +518,6 @@ export const LsPageLoader: StencilReactComponent<LsPageLoaderElement, LsPageLoad
 
 export type LsParticipantCardEvents = {
     onMutate: EventName<LsParticipantCardCustomEvent<LSMutateEvent[]>>,
-    onUpdate: EventName<LsParticipantCardCustomEvent<LSMutateEvent[]>>,
     onOpened: EventName<LsParticipantCardCustomEvent<LSApiRole>>,
     onAddParticipant: EventName<LsParticipantCardCustomEvent<{ type: LSApiRoleType; parent?: string | null }>>
 };
@@ -562,7 +529,6 @@ export const LsParticipantCard: StencilReactComponent<LsParticipantCardElement, 
     react: React,
     events: {
         onMutate: 'mutate',
-        onUpdate: 'update',
         onOpened: 'opened',
         onAddParticipant: 'addParticipant'
     } as LsParticipantCardEvents,
@@ -699,20 +665,14 @@ export const LsTextareaInput: StencilReactComponent<LsTextareaInputElement, LsTe
     defineCustomElement: defineLsTextareaInput
 });
 
-export type LsTitleInputEvents = {
-    onMutate: EventName<LsTitleInputCustomEvent<LSMutateEvent[]>>,
-    onUpdate: EventName<LsTitleInputCustomEvent<LSMutateEvent[]>>
-};
+export type LsTitleInputEvents = { onMutate: EventName<LsTitleInputCustomEvent<LSMutateEvent[]>> };
 
 export const LsTitleInput: StencilReactComponent<LsTitleInputElement, LsTitleInputEvents> = /*@__PURE__*/ createComponent<LsTitleInputElement, LsTitleInputEvents>({
     tagName: 'ls-title-input',
     elementClass: LsTitleInputElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: {
-        onMutate: 'mutate',
-        onUpdate: 'update'
-    } as LsTitleInputEvents,
+    events: { onMutate: 'mutate' } as LsTitleInputEvents,
     defineCustomElement: defineLsTitleInput
 });
 
