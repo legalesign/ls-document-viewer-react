@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@stencil/react-output-target": "^1.2.0",
-    "legalesign-document-viewer": "^0.5.3"
+    "legalesign-document-viewer": "^0.5.4"
   },
   "pnpm": {
     "overrides": {
