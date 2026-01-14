@@ -9,7 +9,7 @@
 
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
-import { type IToolboxField, type LSApiElement, type LSApiRole, type LSApiRoleType, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsRecipientCardCustomEvent, type LsTitleInputCustomEvent, type LsToolbarCustomEvent } from "legalesign-document-viewer";
+import { type IToolboxField, type LSApiElement, type LSApiRole, type LSApiRoleType, type LSApiTemplate, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsRecipientCardCustomEvent, type LsTitleInputCustomEvent, type LsToolbarCustomEvent } from "legalesign-document-viewer";
 import { LsComposeManager as LsComposeManagerElement, defineCustomElement as defineLsComposeManager } from "legalesign-document-viewer/dist/components/ls-compose-manager.js";
 import { LsDocumentOptions as LsDocumentOptionsElement, defineCustomElement as defineLsDocumentOptions } from "legalesign-document-viewer/dist/components/ls-document-options.js";
 import { LsDocumentViewer as LsDocumentViewerElement, defineCustomElement as defineLsDocumentViewer } from "legalesign-document-viewer/dist/components/ls-document-viewer.js";
@@ -99,7 +99,7 @@ export type LsDocumentViewerEvents = {
     onPageChange: EventName<CustomEvent<number>>,
     onSelectFields: EventName<LsDocumentViewerCustomEvent<LSApiElement[]>>,
     onMutate: EventName<LsDocumentViewerCustomEvent<LSMutateEvent[]>>,
-    onUpdate: EventName<LsDocumentViewerCustomEvent<LSMutateEvent>>,
+    onUpdate: EventName<LsDocumentViewerCustomEvent<{ event: LSMutateEvent, template: LSApiTemplate }>>,
     onAddParticipant: EventName<LsDocumentViewerCustomEvent<{ type: LSApiRoleType, parent?: string | null }>>
 };
 
