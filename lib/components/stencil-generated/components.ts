@@ -98,7 +98,9 @@ export type LsDocumentViewerEvents = {
     onPageRendered: EventName<CustomEvent<number>>,
     onPageChange: EventName<CustomEvent<number>>,
     onSelectFields: EventName<LsDocumentViewerCustomEvent<LSApiElement[]>>,
-    onMutate: EventName<LsDocumentViewerCustomEvent<LSMutateEvent[]>>
+    onMutate: EventName<LsDocumentViewerCustomEvent<LSMutateEvent[]>>,
+    onUpdate: EventName<LsDocumentViewerCustomEvent<LSMutateEvent>>,
+    onAddParticipant: EventName<LsDocumentViewerCustomEvent<{ type: LSApiRoleType, parent?: string | null }>>
 };
 
 export const LsDocumentViewer: StencilReactComponent<LsDocumentViewerElement, LsDocumentViewerEvents> = /*@__PURE__*/ createComponent<LsDocumentViewerElement, LsDocumentViewerEvents>({
@@ -110,7 +112,9 @@ export const LsDocumentViewer: StencilReactComponent<LsDocumentViewerElement, Ls
         onPageRendered: 'pageRendered',
         onPageChange: 'pageChange',
         onSelectFields: 'selectFields',
-        onMutate: 'mutate'
+        onMutate: 'mutate',
+        onUpdate: 'update',
+        onAddParticipant: 'addParticipant'
     } as LsDocumentViewerEvents,
     defineCustomElement: defineLsDocumentViewer
 });
