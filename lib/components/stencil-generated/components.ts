@@ -100,6 +100,7 @@ export type LsDocumentViewerEvents = {
     onSelectFields: EventName<LsDocumentViewerCustomEvent<LSApiElement[]>>,
     onMutate: EventName<LsDocumentViewerCustomEvent<LSMutateEvent[]>>,
     onUpdate: EventName<LsDocumentViewerCustomEvent<{ event: LSMutateEvent, template: LSApiTemplate }>>,
+    onValidate: EventName<CustomEvent<{ event: boolean }>>,
     onAddParticipant: EventName<LsDocumentViewerCustomEvent<{ type: LSApiRoleType, parent?: string | null }>>
 };
 
@@ -114,6 +115,7 @@ export const LsDocumentViewer: StencilReactComponent<LsDocumentViewerElement, Ls
         onSelectFields: 'selectFields',
         onMutate: 'mutate',
         onUpdate: 'update',
+        onValidate: 'validate',
         onAddParticipant: 'addParticipant'
     } as LsDocumentViewerEvents,
     defineCustomElement: defineLsDocumentViewer
