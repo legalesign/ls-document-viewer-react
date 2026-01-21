@@ -100,7 +100,7 @@ export type LsDocumentViewerEvents = {
     onSelectFields: EventName<LsDocumentViewerCustomEvent<LSApiElement[]>>,
     onMutate: EventName<LsDocumentViewerCustomEvent<LSMutateEvent[]>>,
     onUpdate: EventName<LsDocumentViewerCustomEvent<{ event: LSMutateEvent, template: LSApiTemplate }>>,
-    onValidate: EventName<CustomEvent<{ event: boolean }>>,
+    onValidate: EventName<CustomEvent<{ valid: boolean }>>,
     onAddParticipant: EventName<LsDocumentViewerCustomEvent<{ type: LSApiRoleType, parent?: string | null }>>
 };
 
