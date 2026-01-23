@@ -15,8 +15,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0(@stencil/core@4.36.2)(@types/react@19.1.9)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       legalesign-document-viewer:
-        specifier: ^0.7.3
-        version: 0.7.3
+        specifier: ^0.8.0
+        version: 0.8.0
     devDependencies:
       '@types/react':
         specifier: ^19.1.9
@@ -654,8 +654,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  legalesign-document-viewer@0.7.3:
-    resolution: {integrity: sha512-SDMKZ9zSCs6Zql8HYLENMYSHAWe6bMdZ+r5rBIhH7KCHs4H6BmVEQsGw3aebL4XHAh6C8sZ7VqLAbsRqNEcExw==}
+  legalesign-document-viewer@0.8.0:
+    resolution: {integrity: sha512-1jQsr99m8E6iuzBoRl/YXDxRmoyN8Q9ivuCUqND8vkzhUzaMe+GUkU1MLki2h+UcttR8E1sZyOxEV0XvwtFrQQ==}
 
   locate-path@5.0.0:
     resolution: {integrity: sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==}
@@ -1558,7 +1558,7 @@ snapshots:
 
   json5@2.2.3: {}
 
-  legalesign-document-viewer@0.7.3:
+  legalesign-document-viewer@0.8.0:
     dependencies:
       '@floating-ui/dom': 1.7.4
       '@jest/transform': 30.2.0
