@@ -10,6 +10,7 @@
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import { type IToolboxField, type LSApiElement, type LSApiRole, type LSApiRoleType, type LSApiTemplate, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsRecipientCardCustomEvent, type LsTitleInputCustomEvent, type LsToolbarCustomEvent } from "legalesign-document-viewer";
+import { LsComposeLoader as LsComposeLoaderElement, defineCustomElement as defineLsComposeLoader } from "legalesign-document-viewer/dist/components/ls-compose-loader.js";
 import { LsComposeManager as LsComposeManagerElement, defineCustomElement as defineLsComposeManager } from "legalesign-document-viewer/dist/components/ls-compose-manager.js";
 import { LsDocumentOptions as LsDocumentOptionsElement, defineCustomElement as defineLsDocumentOptions } from "legalesign-document-viewer/dist/components/ls-document-options.js";
 import { LsDocumentViewer as LsDocumentViewerElement, defineCustomElement as defineLsDocumentViewer } from "legalesign-document-viewer/dist/components/ls-document-viewer.js";
@@ -66,6 +67,17 @@ import { LsValidationManager as LsValidationManagerElement, defineCustomElement 
 import { LsValidationTag as LsValidationTagElement, defineCustomElement as defineLsValidationTag } from "legalesign-document-viewer/dist/components/ls-validation-tag.js";
 import React from 'react';
 
+export type LsComposeLoaderEvents = NonNullable<unknown>;
+
+export const LsComposeLoader: StencilReactComponent<LsComposeLoaderElement, LsComposeLoaderEvents> = /*@__PURE__*/ createComponent<LsComposeLoaderElement, LsComposeLoaderEvents>({
+    tagName: 'ls-compose-loader',
+    elementClass: LsComposeLoaderElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as LsComposeLoaderEvents,
+    defineCustomElement: defineLsComposeLoader
+});
+
 export type LsComposeManagerEvents = NonNullable<unknown>;
 
 export const LsComposeManager: StencilReactComponent<LsComposeManagerElement, LsComposeManagerEvents> = /*@__PURE__*/ createComponent<LsComposeManagerElement, LsComposeManagerEvents>({
@@ -99,9 +111,9 @@ export type LsDocumentViewerEvents = {
     onPageChange: EventName<CustomEvent<number>>,
     onSelectFields: EventName<LsDocumentViewerCustomEvent<LSApiElement[]>>,
     onMutate: EventName<LsDocumentViewerCustomEvent<LSMutateEvent[]>>,
-    onUpdate: EventName<LsDocumentViewerCustomEvent<{ event: LSMutateEvent, template: LSApiTemplate }>>,
+    onUpdate: EventName<LsDocumentViewerCustomEvent<{ event: LSMutateEvent; template: LSApiTemplate }>>,
     onValidate: EventName<CustomEvent<{ valid: boolean }>>,
-    onAddParticipant: EventName<LsDocumentViewerCustomEvent<{ type: LSApiRoleType, parent?: string | null }>>
+    onAddParticipant: EventName<LsDocumentViewerCustomEvent<{ type: LSApiRoleType; parent?: string | null }>>
 };
 
 export const LsDocumentViewer: StencilReactComponent<LsDocumentViewerElement, LsDocumentViewerEvents> = /*@__PURE__*/ createComponent<LsDocumentViewerElement, LsDocumentViewerEvents>({
