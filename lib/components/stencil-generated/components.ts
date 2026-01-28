@@ -113,7 +113,7 @@ export type LsDocumentViewerEvents = {
     onMutate: EventName<LsDocumentViewerCustomEvent<LSMutateEvent[]>>,
     onUpdate: EventName<LsDocumentViewerCustomEvent<{ event: LSMutateEvent; template: LSApiTemplate }>>,
     onValidate: EventName<CustomEvent<{ valid: boolean }>>,
-    onAddParticipant: EventName<LsDocumentViewerCustomEvent<{ type: LSApiRoleType; parent?: string | null }>>
+    onAddParticipant: EventName<LsDocumentViewerCustomEvent<{ name?: string | null; type: LSApiRoleType; parent?: string | null; signerIndex?: number }>>
 };
 
 export const LsDocumentViewer: StencilReactComponent<LsDocumentViewerElement, LsDocumentViewerEvents> = /*@__PURE__*/ createComponent<LsDocumentViewerElement, LsDocumentViewerEvents>({
