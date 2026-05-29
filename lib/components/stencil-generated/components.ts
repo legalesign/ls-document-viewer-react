@@ -45,6 +45,7 @@ import { LsHelperBar as LsHelperBarElement, defineCustomElement as defineLsHelpe
 import { LsIcon as LsIconElement, defineCustomElement as defineLsIcon } from "legalesign-document-viewer/dist/components/ls-icon.js";
 import { LsInputWrapper as LsInputWrapperElement, defineCustomElement as defineLsInputWrapper } from "legalesign-document-viewer/dist/components/ls-input-wrapper.js";
 import { LsKeyboardShortcuts as LsKeyboardShortcutsElement, defineCustomElement as defineLsKeyboardShortcuts } from "legalesign-document-viewer/dist/components/ls-keyboard-shortcuts.js";
+import { LsLeftBar as LsLeftBarElement, defineCustomElement as defineLsLeftBar } from "legalesign-document-viewer/dist/components/ls-left-bar.js";
 import { LsNumberInput as LsNumberInputElement, defineCustomElement as defineLsNumberInput } from "legalesign-document-viewer/dist/components/ls-number-input.js";
 import { LsPageLoader as LsPageLoaderElement, defineCustomElement as defineLsPageLoader } from "legalesign-document-viewer/dist/components/ls-page-loader.js";
 import { LsParticipantCard as LsParticipantCardElement, defineCustomElement as defineLsParticipantCard } from "legalesign-document-viewer/dist/components/ls-participant-card.js";
@@ -510,6 +511,23 @@ export const LsKeyboardShortcuts: StencilReactComponent<LsKeyboardShortcutsEleme
     react: React,
     events: {} as LsKeyboardShortcutsEvents,
     defineCustomElement: defineLsKeyboardShortcuts
+});
+
+export type LsLeftBarEvents = {
+    onManagerChange: EventName<CustomEvent<string>>,
+    onClearSelected: EventName<CustomEvent<void>>
+};
+
+export const LsLeftBar: StencilReactComponent<LsLeftBarElement, LsLeftBarEvents> = /*@__PURE__*/ createComponent<LsLeftBarElement, LsLeftBarEvents>({
+    tagName: 'ls-left-bar',
+    elementClass: LsLeftBarElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onManagerChange: 'managerChange',
+        onClearSelected: 'clearSelected'
+    } as LsLeftBarEvents,
+    defineCustomElement: defineLsLeftBar
 });
 
 export type LsNumberInputEvents = NonNullable<unknown>;
