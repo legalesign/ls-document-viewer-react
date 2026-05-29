@@ -29,8 +29,7 @@
   "scripts": {
     "build": "pnpm run tsc",
     "tsc": "tsc -p . --outDir ./dist",
-    "getiton": "pnpm install legalesign-document-viewer@latest",
-    "publish": "npm publish --scope=public"
+    "getiton": "pnpm install legalesign-document-viewer@latest"
   },
   "publishConfig": {
     "access": "public"
