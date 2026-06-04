@@ -21,6 +21,7 @@
   "files": [
     "dist",
     "lib",
+    "styles",
     "types"
   ],
   "exclude": [
