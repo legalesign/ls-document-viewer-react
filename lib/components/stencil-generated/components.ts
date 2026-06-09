@@ -9,7 +9,7 @@
 
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
-import { type IToolboxField, type LSApiElement, type LSApiRole, type LSApiRoleType, type LSApiTemplate, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsRecipientCardCustomEvent, type LsTitleInputCustomEvent, type LsToolbarCustomEvent } from "legalesign-document-viewer";
+import { type IToolboxField, type LSApiElement, type LSApiRole, type LSApiRoleType, type LSApiTemplate, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsRecipientCardCustomEvent, type LsTitleInputCustomEvent, type LsToolbarCustomEvent, type LsToolboxFieldCustomEvent } from "legalesign-document-viewer";
 import { LsAddNewButton as LsAddNewButtonElement, defineCustomElement as defineLsAddNewButton } from "legalesign-document-viewer/dist/components/ls-add-new-button.js";
 import { LsBadge as LsBadgeElement, defineCustomElement as defineLsBadge } from "legalesign-document-viewer/dist/components/ls-badge.js";
 import { LsBanner as LsBannerElement, defineCustomElement as defineLsBanner } from "legalesign-document-viewer/dist/components/ls-banner.js";
@@ -1048,7 +1048,8 @@ export type LsToolboxFieldEvents = {
         formElementType: string;
         validation: number;
         fixedAspect: number | null;
-    }>>
+    }>>,
+    onToolboxDragStart: EventName<LsToolboxFieldCustomEvent<IToolboxField>>
 };
 
 export const LsToolboxField: StencilReactComponent<LsToolboxFieldElement, LsToolboxFieldEvents> = /*@__PURE__*/ createComponent<LsToolboxFieldElement, LsToolboxFieldEvents>({
@@ -1056,7 +1057,10 @@ export const LsToolboxField: StencilReactComponent<LsToolboxFieldElement, LsTool
     elementClass: LsToolboxFieldElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onFieldTypeSelected: 'fieldTypeSelected' } as LsToolboxFieldEvents,
+    events: {
+        onFieldTypeSelected: 'fieldTypeSelected',
+        onToolboxDragStart: 'toolboxDragStart'
+    } as LsToolboxFieldEvents,
     defineCustomElement: defineLsToolboxField
 });
 
