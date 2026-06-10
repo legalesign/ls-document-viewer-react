@@ -690,7 +690,7 @@ export const LsLabel: StencilReactComponent<LsLabelElement, LsLabelEvents> = /*@
 });
 
 export type LsLeftBarEvents = {
-    onManagerChange: EventName<CustomEvent<string>>,
+    onManagerChange: EventName<CustomEvent<'document' | 'toolbox' | 'participant' | 'recipient' | 'validation'>>,
     onClearSelected: EventName<CustomEvent<void>>
 };
 
