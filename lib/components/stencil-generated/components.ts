@@ -807,7 +807,8 @@ export const LsParticipantCard: StencilReactComponent<LsParticipantCardElement, 
 export type LsParticipantManagerEvents = {
     onMutate: EventName<LsParticipantManagerCustomEvent<LSMutateEvent[]>>,
     onUpdate: EventName<LsParticipantManagerCustomEvent<LSMutateEvent[]>>,
-    onAddParticipant: EventName<LsParticipantManagerCustomEvent<{ type: LSApiRoleType; parent?: string | null }>>
+    onAddParticipant: EventName<LsParticipantManagerCustomEvent<{ type: LSApiRoleType; parent?: string | null }>>,
+    onRoleChange: EventName<CustomEvent<number>>
 };
 
 export const LsParticipantManager: StencilReactComponent<LsParticipantManagerElement, LsParticipantManagerEvents> = /*@__PURE__*/ createComponent<LsParticipantManagerElement, LsParticipantManagerEvents>({
@@ -818,7 +819,8 @@ export const LsParticipantManager: StencilReactComponent<LsParticipantManagerEle
     events: {
         onMutate: 'mutate',
         onUpdate: 'update',
-        onAddParticipant: 'addParticipant'
+        onAddParticipant: 'addParticipant',
+        onRoleChange: 'roleChange'
     } as LsParticipantManagerEvents,
     defineCustomElement: defineLsParticipantManager
 });
