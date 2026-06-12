@@ -9,7 +9,7 @@
 
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
-import { type IToolboxField, type LSApiElement, type LSApiRole, type LSApiRoleType, type LSApiTemplate, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsRecipientCardCustomEvent, type LsTitleInputCustomEvent, type LsToolbarCustomEvent, type LsToolboxFieldCustomEvent } from "legalesign-document-viewer";
+import { type IToolboxField, type LSApiElement, type LSApiRole, type LSApiRoleType, type LSApiTemplate, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsRecipientCardCustomEvent, type LsTitleInputCustomEvent, type LsToolbarCustomEvent, type LsToolboxFieldCustomEvent, type LsValidationManagerCustomEvent, type LsValidationTagCustomEvent } from "legalesign-document-viewer";
 import { LsAddNewButton as LsAddNewButtonElement, defineCustomElement as defineLsAddNewButton } from "legalesign-document-viewer/dist/components/ls-add-new-button.js";
 import { LsBadge as LsBadgeElement, defineCustomElement as defineLsBadge } from "legalesign-document-viewer/dist/components/ls-badge.js";
 import { LsBanner as LsBannerElement, defineCustomElement as defineLsBanner } from "legalesign-document-viewer/dist/components/ls-banner.js";
@@ -1077,20 +1077,21 @@ export const LsTooltip: StencilReactComponent<LsTooltipElement, LsTooltipEvents>
     defineCustomElement: defineLsTooltip
 });
 
-export type LsValidationManagerEvents = NonNullable<unknown>;
+export type LsValidationManagerEvents = { onSelectFields: EventName<LsValidationManagerCustomEvent<LSApiElement[]>> };
 
 export const LsValidationManager: StencilReactComponent<LsValidationManagerElement, LsValidationManagerEvents> = /*@__PURE__*/ createComponent<LsValidationManagerElement, LsValidationManagerEvents>({
     tagName: 'ls-validation-manager',
     elementClass: LsValidationManagerElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: {} as LsValidationManagerEvents,
+    events: { onSelectFields: 'selectFields' } as LsValidationManagerEvents,
     defineCustomElement: defineLsValidationManager
 });
 
 export type LsValidationTagEvents = {
     onChangeSigner: EventName<CustomEvent<number>>,
-    onSelectFieldForPlacement: EventName<CustomEvent<{ signerIndex: number; fieldType: string }>>
+    onSelectFieldForPlacement: EventName<CustomEvent<{ signerIndex: number; fieldType: string }>>,
+    onSelectFields: EventName<LsValidationTagCustomEvent<LSApiElement[]>>
 };
 
 export const LsValidationTag: StencilReactComponent<LsValidationTagElement, LsValidationTagEvents> = /*@__PURE__*/ createComponent<LsValidationTagElement, LsValidationTagEvents>({
@@ -1100,7 +1101,8 @@ export const LsValidationTag: StencilReactComponent<LsValidationTagElement, LsVa
     react: React,
     events: {
         onChangeSigner: 'changeSigner',
-        onSelectFieldForPlacement: 'selectFieldForPlacement'
+        onSelectFieldForPlacement: 'selectFieldForPlacement',
+        onSelectFields: 'selectFields'
     } as LsValidationTagEvents,
     defineCustomElement: defineLsValidationTag
 });
