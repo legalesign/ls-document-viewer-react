@@ -11,6 +11,7 @@ import type { EventName, StencilReactComponent } from '@stencil/react-output-tar
 import { createComponent } from '@stencil/react-output-target/runtime';
 import { type IToolboxField, type LSApiElement, type LSApiRole, type LSApiRoleType, type LSApiTemplate, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsRecipientCardCustomEvent, type LsTitleInputCustomEvent, type LsToolbarCustomEvent, type LsToolboxFieldCustomEvent, type LsValidationManagerCustomEvent, type LsValidationTagCustomEvent } from "legalesign-document-viewer";
 import { LsAddNewButton as LsAddNewButtonElement, defineCustomElement as defineLsAddNewButton } from "legalesign-document-viewer/dist/components/ls-add-new-button.js";
+import { LsAssigneeSelect as LsAssigneeSelectElement, defineCustomElement as defineLsAssigneeSelect } from "legalesign-document-viewer/dist/components/ls-assignee-select.js";
 import { LsBadge as LsBadgeElement, defineCustomElement as defineLsBadge } from "legalesign-document-viewer/dist/components/ls-badge.js";
 import { LsBanner as LsBannerElement, defineCustomElement as defineLsBanner } from "legalesign-document-viewer/dist/components/ls-banner.js";
 import { LsButton as LsButtonElement, defineCustomElement as defineLsButton } from "legalesign-document-viewer/dist/components/ls-button.js";
@@ -35,13 +36,13 @@ import { LsFieldFormat as LsFieldFormatElement, defineCustomElement as defineLsF
 import { LsFieldPlacement as LsFieldPlacementElement, defineCustomElement as defineLsFieldPlacement } from "legalesign-document-viewer/dist/components/ls-field-placement.js";
 import { LsFieldPropertiesAdvanced as LsFieldPropertiesAdvancedElement, defineCustomElement as defineLsFieldPropertiesAdvanced } from "legalesign-document-viewer/dist/components/ls-field-properties-advanced.js";
 import { LsFieldPropertiesAutosign as LsFieldPropertiesAutosignElement, defineCustomElement as defineLsFieldPropertiesAutosign } from "legalesign-document-viewer/dist/components/ls-field-properties-autosign.js";
+import { LsFieldPropertiesCheckbox as LsFieldPropertiesCheckboxElement, defineCustomElement as defineLsFieldPropertiesCheckbox } from "legalesign-document-viewer/dist/components/ls-field-properties-checkbox.js";
 import { LsFieldPropertiesContainer as LsFieldPropertiesContainerElement, defineCustomElement as defineLsFieldPropertiesContainer } from "legalesign-document-viewer/dist/components/ls-field-properties-container.js";
 import { LsFieldPropertiesDate as LsFieldPropertiesDateElement, defineCustomElement as defineLsFieldPropertiesDate } from "legalesign-document-viewer/dist/components/ls-field-properties-date.js";
 import { LsFieldPropertiesDropdown as LsFieldPropertiesDropdownElement, defineCustomElement as defineLsFieldPropertiesDropdown } from "legalesign-document-viewer/dist/components/ls-field-properties-dropdown.js";
 import { LsFieldPropertiesEmail as LsFieldPropertiesEmailElement, defineCustomElement as defineLsFieldPropertiesEmail } from "legalesign-document-viewer/dist/components/ls-field-properties-email.js";
 import { LsFieldPropertiesFile as LsFieldPropertiesFileElement, defineCustomElement as defineLsFieldPropertiesFile } from "legalesign-document-viewer/dist/components/ls-field-properties-file.js";
 import { LsFieldPropertiesGeneral as LsFieldPropertiesGeneralElement, defineCustomElement as defineLsFieldPropertiesGeneral } from "legalesign-document-viewer/dist/components/ls-field-properties-general.js";
-import { LsFieldPropertiesImage as LsFieldPropertiesImageElement, defineCustomElement as defineLsFieldPropertiesImage } from "legalesign-document-viewer/dist/components/ls-field-properties-image.js";
 import { LsFieldPropertiesMultiple as LsFieldPropertiesMultipleElement, defineCustomElement as defineLsFieldPropertiesMultiple } from "legalesign-document-viewer/dist/components/ls-field-properties-multiple.js";
 import { LsFieldPropertiesNumber as LsFieldPropertiesNumberElement, defineCustomElement as defineLsFieldPropertiesNumber } from "legalesign-document-viewer/dist/components/ls-field-properties-number.js";
 import { LsFieldPropertiesSignature as LsFieldPropertiesSignatureElement, defineCustomElement as defineLsFieldPropertiesSignature } from "legalesign-document-viewer/dist/components/ls-field-properties-signature.js";
@@ -49,6 +50,7 @@ import { LsFieldPropertiesText as LsFieldPropertiesTextElement, defineCustomElem
 import { LsFieldProperties as LsFieldPropertiesElement, defineCustomElement as defineLsFieldProperties } from "legalesign-document-viewer/dist/components/ls-field-properties.js";
 import { LsFieldSize as LsFieldSizeElement, defineCustomElement as defineLsFieldSize } from "legalesign-document-viewer/dist/components/ls-field-size.js";
 import { LsFieldTypeDisplay as LsFieldTypeDisplayElement, defineCustomElement as defineLsFieldTypeDisplay } from "legalesign-document-viewer/dist/components/ls-field-type-display.js";
+import { LsFieldTypeSelect as LsFieldTypeSelectElement, defineCustomElement as defineLsFieldTypeSelect } from "legalesign-document-viewer/dist/components/ls-field-type-select.js";
 import { LsFormfield as LsFormfieldElement, defineCustomElement as defineLsFormfield } from "legalesign-document-viewer/dist/components/ls-formfield.js";
 import { LsHeaderBar as LsHeaderBarElement, defineCustomElement as defineLsHeaderBar } from "legalesign-document-viewer/dist/components/ls-header-bar.js";
 import { LsHelperBar as LsHelperBarElement, defineCustomElement as defineLsHelperBar } from "legalesign-document-viewer/dist/components/ls-helper-bar.js";
@@ -102,6 +104,17 @@ export const LsAddNewButton: StencilReactComponent<LsAddNewButtonElement, LsAddN
     react: React,
     events: {} as LsAddNewButtonEvents,
     defineCustomElement: defineLsAddNewButton
+});
+
+export type LsAssigneeSelectEvents = { onAssigneeChange: EventName<CustomEvent<number>> };
+
+export const LsAssigneeSelect: StencilReactComponent<LsAssigneeSelectElement, LsAssigneeSelectEvents> = /*@__PURE__*/ createComponent<LsAssigneeSelectElement, LsAssigneeSelectEvents>({
+    tagName: 'ls-assignee-select',
+    elementClass: LsAssigneeSelectElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onAssigneeChange: 'assigneeChange' } as LsAssigneeSelectEvents,
+    defineCustomElement: defineLsAssigneeSelect
 });
 
 export type LsBadgeEvents = NonNullable<unknown>;
@@ -433,6 +446,17 @@ export const LsFieldPropertiesAutosign: StencilReactComponent<LsFieldPropertiesA
     defineCustomElement: defineLsFieldPropertiesAutosign
 });
 
+export type LsFieldPropertiesCheckboxEvents = NonNullable<unknown>;
+
+export const LsFieldPropertiesCheckbox: StencilReactComponent<LsFieldPropertiesCheckboxElement, LsFieldPropertiesCheckboxEvents> = /*@__PURE__*/ createComponent<LsFieldPropertiesCheckboxElement, LsFieldPropertiesCheckboxEvents>({
+    tagName: 'ls-field-properties-checkbox',
+    elementClass: LsFieldPropertiesCheckboxElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as LsFieldPropertiesCheckboxEvents,
+    defineCustomElement: defineLsFieldPropertiesCheckbox
+});
+
 export type LsFieldPropertiesContainerEvents = NonNullable<unknown>;
 
 export const LsFieldPropertiesContainer: StencilReactComponent<LsFieldPropertiesContainerElement, LsFieldPropertiesContainerEvents> = /*@__PURE__*/ createComponent<LsFieldPropertiesContainerElement, LsFieldPropertiesContainerEvents>({
@@ -497,17 +521,6 @@ export const LsFieldPropertiesGeneral: StencilReactComponent<LsFieldPropertiesGe
     react: React,
     events: {} as LsFieldPropertiesGeneralEvents,
     defineCustomElement: defineLsFieldPropertiesGeneral
-});
-
-export type LsFieldPropertiesImageEvents = NonNullable<unknown>;
-
-export const LsFieldPropertiesImage: StencilReactComponent<LsFieldPropertiesImageElement, LsFieldPropertiesImageEvents> = /*@__PURE__*/ createComponent<LsFieldPropertiesImageElement, LsFieldPropertiesImageEvents>({
-    tagName: 'ls-field-properties-image',
-    elementClass: LsFieldPropertiesImageElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
-    react: React,
-    events: {} as LsFieldPropertiesImageEvents,
-    defineCustomElement: defineLsFieldPropertiesImage
 });
 
 export type LsFieldPropertiesMultipleEvents = {
@@ -580,6 +593,17 @@ export const LsFieldTypeDisplay: StencilReactComponent<LsFieldTypeDisplayElement
     react: React,
     events: {} as LsFieldTypeDisplayEvents,
     defineCustomElement: defineLsFieldTypeDisplay
+});
+
+export type LsFieldTypeSelectEvents = { onFieldTypeChange: EventName<CustomEvent<string>> };
+
+export const LsFieldTypeSelect: StencilReactComponent<LsFieldTypeSelectElement, LsFieldTypeSelectEvents> = /*@__PURE__*/ createComponent<LsFieldTypeSelectElement, LsFieldTypeSelectEvents>({
+    tagName: 'ls-field-type-select',
+    elementClass: LsFieldTypeSelectElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onFieldTypeChange: 'fieldTypeChange' } as LsFieldTypeSelectEvents,
+    defineCustomElement: defineLsFieldTypeSelect
 });
 
 export type LsFormfieldEvents = {
