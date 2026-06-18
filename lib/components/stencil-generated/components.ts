@@ -77,6 +77,7 @@ import { LsRadioInput as LsRadioInputElement, defineCustomElement as defineLsRad
 import { LsRecipientCard as LsRecipientCardElement, defineCustomElement as defineLsRecipientCard } from "legalesign-document-viewer/dist/components/ls-recipient-card.js";
 import { LsRecipientManager as LsRecipientManagerElement, defineCustomElement as defineLsRecipientManager } from "legalesign-document-viewer/dist/components/ls-recipient-manager.js";
 import { LsSelectInput as LsSelectInputElement, defineCustomElement as defineLsSelectInput } from "legalesign-document-viewer/dist/components/ls-select-input.js";
+import { LsSelectMenu as LsSelectMenuElement, defineCustomElement as defineLsSelectMenu } from "legalesign-document-viewer/dist/components/ls-select-menu.js";
 import { LsStatusbar as LsStatusbarElement, defineCustomElement as defineLsStatusbar } from "legalesign-document-viewer/dist/components/ls-statusbar.js";
 import { LsTabs as LsTabsElement, defineCustomElement as defineLsTabs } from "legalesign-document-viewer/dist/components/ls-tabs.js";
 import { LsTag as LsTagElement, defineCustomElement as defineLsTag } from "legalesign-document-viewer/dist/components/ls-tag.js";
@@ -936,6 +937,17 @@ export const LsSelectInput: StencilReactComponent<LsSelectInputElement, LsSelect
     react: React,
     events: { onSelectChange: 'selectChange' } as LsSelectInputEvents,
     defineCustomElement: defineLsSelectInput
+});
+
+export type LsSelectMenuEvents = { onSelectFields: EventName<CustomEvent<any[]>> };
+
+export const LsSelectMenu: StencilReactComponent<LsSelectMenuElement, LsSelectMenuEvents> = /*@__PURE__*/ createComponent<LsSelectMenuElement, LsSelectMenuEvents>({
+    tagName: 'ls-select-menu',
+    elementClass: LsSelectMenuElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onSelectFields: 'selectFields' } as LsSelectMenuEvents,
+    defineCustomElement: defineLsSelectMenu
 });
 
 export type LsStatusbarEvents = NonNullable<unknown>;
