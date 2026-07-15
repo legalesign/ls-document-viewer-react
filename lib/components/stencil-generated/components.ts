@@ -9,7 +9,7 @@
 
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
-import { type IToolboxField, type LSApiElement, type LSApiRole, type LSApiRoleType, type LSApiTemplate, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsRecipientCardCustomEvent, type LsTitleInputCustomEvent, type LsToolbarCustomEvent, type LsToolboxFieldCustomEvent, type LsValidationManagerCustomEvent, type LsValidationTagCustomEvent, type ValidationError } from "legalesign-document-viewer";
+import { type IToolboxField, type LSApiElement, type LSApiRole, type LSApiRoleType, type LSApiTemplate, type LSMutateEvent, type LsDocumentOptionsCustomEvent, type LsDocumentViewerCustomEvent, type LsEditorFieldCustomEvent, type LsFieldAlignmentCustomEvent, type LsFieldContentCustomEvent, type LsFieldDimensionsCustomEvent, type LsFieldDistributeCustomEvent, type LsFieldFooterCustomEvent, type LsFieldFormatCustomEvent, type LsFieldPlacementCustomEvent, type LsFieldPropertiesAdvancedCustomEvent, type LsFieldPropertiesMultipleCustomEvent, type LsFieldPropertiesRegexCustomEvent, type LsFieldSizeCustomEvent, type LsParticipantCardCustomEvent, type LsParticipantManagerCustomEvent, type LsParticipantSelectCustomEvent, type LsRecipientCardCustomEvent, type LsTitleInputCustomEvent, type LsToolbarCustomEvent, type LsToolboxFieldCustomEvent, type LsValidationManagerCustomEvent, type LsValidationTagCustomEvent, type ValidationError } from "legalesign-document-viewer";
 import { LsAddNewButton as LsAddNewButtonElement, defineCustomElement as defineLsAddNewButton } from "legalesign-document-viewer/dist/components/ls-add-new-button.js";
 import { LsAssigneeSelect as LsAssigneeSelectElement, defineCustomElement as defineLsAssigneeSelect } from "legalesign-document-viewer/dist/components/ls-assignee-select.js";
 import { LsBadge as LsBadgeElement, defineCustomElement as defineLsBadge } from "legalesign-document-viewer/dist/components/ls-badge.js";
@@ -45,6 +45,7 @@ import { LsFieldPropertiesFile as LsFieldPropertiesFileElement, defineCustomElem
 import { LsFieldPropertiesGeneral as LsFieldPropertiesGeneralElement, defineCustomElement as defineLsFieldPropertiesGeneral } from "legalesign-document-viewer/dist/components/ls-field-properties-general.js";
 import { LsFieldPropertiesMultiple as LsFieldPropertiesMultipleElement, defineCustomElement as defineLsFieldPropertiesMultiple } from "legalesign-document-viewer/dist/components/ls-field-properties-multiple.js";
 import { LsFieldPropertiesNumber as LsFieldPropertiesNumberElement, defineCustomElement as defineLsFieldPropertiesNumber } from "legalesign-document-viewer/dist/components/ls-field-properties-number.js";
+import { LsFieldPropertiesRegex as LsFieldPropertiesRegexElement, defineCustomElement as defineLsFieldPropertiesRegex } from "legalesign-document-viewer/dist/components/ls-field-properties-regex.js";
 import { LsFieldPropertiesSignature as LsFieldPropertiesSignatureElement, defineCustomElement as defineLsFieldPropertiesSignature } from "legalesign-document-viewer/dist/components/ls-field-properties-signature.js";
 import { LsFieldPropertiesText as LsFieldPropertiesTextElement, defineCustomElement as defineLsFieldPropertiesText } from "legalesign-document-viewer/dist/components/ls-field-properties-text.js";
 import { LsFieldProperties as LsFieldPropertiesElement, defineCustomElement as defineLsFieldProperties } from "legalesign-document-viewer/dist/components/ls-field-properties.js";
@@ -550,6 +551,23 @@ export const LsFieldPropertiesNumber: StencilReactComponent<LsFieldPropertiesNum
     react: React,
     events: {} as LsFieldPropertiesNumberEvents,
     defineCustomElement: defineLsFieldPropertiesNumber
+});
+
+export type LsFieldPropertiesRegexEvents = {
+    onMutate: EventName<LsFieldPropertiesRegexCustomEvent<LSMutateEvent[]>>,
+    onUpdate: EventName<LsFieldPropertiesRegexCustomEvent<LSMutateEvent[]>>
+};
+
+export const LsFieldPropertiesRegex: StencilReactComponent<LsFieldPropertiesRegexElement, LsFieldPropertiesRegexEvents> = /*@__PURE__*/ createComponent<LsFieldPropertiesRegexElement, LsFieldPropertiesRegexEvents>({
+    tagName: 'ls-field-properties-regex',
+    elementClass: LsFieldPropertiesRegexElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onMutate: 'mutate',
+        onUpdate: 'update'
+    } as LsFieldPropertiesRegexEvents,
+    defineCustomElement: defineLsFieldPropertiesRegex
 });
 
 export type LsFieldPropertiesSignatureEvents = NonNullable<unknown>;
